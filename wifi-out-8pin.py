@@ -60,7 +60,6 @@ def start_web_server():
         handle_request(request)
 
 
-        # ارسال هدر به جای متن
         conn.send("HTTP/1.1 200 OK\nContent-Type: text/html\n\n")
 
         # ارسال بدنه پیام به صورت یکباره

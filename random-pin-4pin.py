@@ -1,19 +1,12 @@
 import time
-from machine import Pin
+import machine
 import random
 
-pt = Pin.OUT
-
-
-PIN2 = Pin(2, pt)
-PIN4 = Pin(4, pt)
-PIN18 = Pin(18, pt)
-PIN19 = Pin(19, pt)
-
-numbers = [PIN2, PIN4, PIN18, PIN19]
+pin_numbers = [2, 4, 18, 19]
+pins = [machine.Pin(pin, machine.Pin.OUT) for pin in pin_numbers]
 
 while True:
-    x = random.choice(numbers)# Write your code here :-)
+    x = random.choice(pins)# Write your code here :-)
     pinx = x
     pinx.on()
     time.sleep(0.1)
