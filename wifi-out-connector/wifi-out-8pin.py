@@ -5,8 +5,8 @@ from html_generator import HtmlGenerator
 import network
 from pin_handler import PinHandler
 
-WIFI_SSID = "ZeRo"
-WIFI_PASSWORD = "karimi1397"
+WIFI_SSID = "SSID"
+WIFI_PASSWORD = "PASSWORD"
 
 pin_numbers = [2, 4, 16, 17, 5, 18, 19, 21]
 pins = [machine.Pin(pin, machine.Pin.OUT) for pin in pin_numbers]
