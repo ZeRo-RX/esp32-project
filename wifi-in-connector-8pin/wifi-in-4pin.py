@@ -2,6 +2,8 @@ import network
 import machine
 import socket
 from html_generator import HtmlGenerator
+from pin_handler import PinHandler
+from wifi_ap_module import WifiAPManager
 
 WIFI_SSID = "ESP32_AP"  # نام شبکه
 WIFI_PASSWORD = ""  # رمز عبور
@@ -12,33 +14,12 @@ pins = [machine.Pin(pin, machine.Pin.OUT) for pin in pin_numbers]
 htmlGenerator = HtmlGenerator(pin_numbers)
 html = htmlGenerator.create_html()
 
-def create_wifi_ap():
-    ap = network.WLAN(network.AP_IF)
-    ap.active(True)
-    ap.config(essid=WIFI_SSID, password=WIFI_PASSWORD)
-    print("WiFi Access Point created:", WIFI_SSID)
+pin_handler = PinHandler(pins, pin_numbers)
 
-
-def handle_request(request):
-
-    for i in range(len(pin_numbers)):
-        if f"/pin{pin_numbers[i]}/on" in request:
-            pins[i].on()
-        elif f"/pin{pin_numbers[i]}/off" in request:
-            pins[i].off()
-
-    if "/allpin/on" in request:
-        for i in range(len(pin_numbers)):
-            pins[i].on()
-
-    elif "/allpin/off" in request:
-        for i in range(len(pin_numbers)):
-            pins[i].off()
-
-
+wifi_manager = WifiAPManager(WIFI_SSID, WIFI_PASSWORD)
 
 def start_web_server():
-    create_wifi_ap()
+    wifi_manager.create_wifi_ap()
 
     addr = "192.168.4.1"  # آدرس IP شبکه ایجاد شده توسط ESP32
     print("Web server started on", addr)
@@ -54,7 +35,7 @@ def start_web_server():
         request = conn.recv(1024)
         request = str(request)
 
-        handle_request(request)
+        pin_handler.handle_request(request)
 
         # ارسال هدر به جای متن
         conn.send("HTTP/1.1 200 OK\nContent-Type: text/html\n\n")

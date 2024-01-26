@@ -1,7 +1,8 @@
-import network
+from wifi_connector import WifiConnector
 import machine
 import socket
 from html_generator import HtmlGenerator
+import network
 
 WIFI_SSID = "SSID"
 WIFI_PASSWORD = "PASSWORD"
@@ -10,18 +11,10 @@ WIFI_PASSWORD = "PASSWORD"
 pin_numbers = [2, 4,18, 19]
 pins = [machine.Pin(pin, machine.Pin.OUT) for pin in pin_numbers]
 
-
 htmlGenerator = HtmlGenerator(pin_numbers)
 html = htmlGenerator.create_html()
 
-def connect_to_wifi():
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    wlan.connect(WIFI_SSID, WIFI_PASSWORD)
-    while not wlan.isconnected():
-        pass
-    print("Connected to WiFi")
-
+wifi_connector = WifiConnector(WIFI_SSID, WIFI_PASSWORD)
 
 def handle_request(request):
 
@@ -41,7 +34,7 @@ def handle_request(request):
 
 
 def start_web_server():
-    connect_to_wifi()
+    wifi_connector.connect()
 
     addr = network.WLAN().ifconfig()[0]
     print("Web server started on", addr)
@@ -59,12 +52,10 @@ def start_web_server():
 
         handle_request(request)
 
-
         conn.send("HTTP/1.1 200 OK\nContent-Type: text/html\n\n")
 
         # ارسال بدنه پیام به صورت یکباره
         conn.sendall(html)
         conn.close()
-
 
 start_web_server()
