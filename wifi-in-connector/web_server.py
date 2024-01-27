@@ -1,6 +1,6 @@
 import machine
 import socket
-from html_generator import HtmlGenerator
+from utils.html_generator import HtmlGenerator
 from pin_handler import PinHandler
 from wifi_ap_module import WifiAPManager
 

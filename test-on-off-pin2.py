@@ -3,31 +3,32 @@ import network
 import socket
 from machine import Pin
 
-# نام و رمز عبور شبکه وای فای خود را وارد کنید
+# Set the 
 ssid = "ZeRo"
 password = "karimi1397"
 
-# ماژول وای فای را راه اندازی کنید
+# Starting WiFi module
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 
-# ماژول وای فای را به شبکه وصل کنید
+# Connection WiFi module to the network
 wlan.connect(ssid, password)
 
-# تا زمانی که ماژول به شبکه وصل نشود صبر کنید
+# Waiting for WiFi module to connect to the network
 while not wlan.isconnected():
     pass
 
-# تعریف پین D2 به عنوان خروجی
+# Setting D2 as the out module
 pin2 = Pin(2, Pin.OUT)
-# ایجاد سرویس وب ساده
+
+# starting simple web service
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('', 80))
 server.listen(1)
 
-# تعریف تابع render()
+
 def render(pin_state):
-    # محتوای HTML را برای سرویس وب بازگردانید
+    # Rendering HRML content for the web service
     return f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -54,31 +55,31 @@ def render(pin_state):
     </html>
     """
 
-# مقدار اولیه وضعیت پورت 2
+# Port 2 value at the beginning
 state = "off"
 
 while True:
-    # پذیرفتن اتصال جدید
+    # Accepting new connection
     connection, address = server.accept()
 
-    # دریافت درخواست از مشتری
+    # Getting the request from client
     request = connection.recv(1024)
 
-    # پردازش درخواست
+    # Processing Request
     if "GET /on HTTP/1.1" in request:
-        # روشن کردن وب پورت 2
+        # Turning on web port 2
         state = "on"
         pin2.on()
 
     elif "GET /off HTTP/1.1" in request:
-        # خاموش کردن وب پورت 2
+        # Turning off web port 2
         state = "off"
         pin2.off()
 
-    # ارسال پاسخ به مشتری
+    #Sending response to the client
     response = render(state)
     connection.send(response.encode())
 
-    # بستن اتصال
+    # Closing connection
     connection.close()
 
