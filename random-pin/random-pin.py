@@ -2,7 +2,7 @@ import time
 import machine
 import random
 
-pin_numbers = [2, 4, 18, 19]
+pin_numbers = [2, 4, 16, 17, 5, 18, 19, 21] # Or any pin you like
 pins = [machine.Pin(pin, machine.Pin.OUT) for pin in pin_numbers]
 
 while True:

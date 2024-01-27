@@ -1,7 +1,7 @@
 from wifi_connector import WifiConnector
 import machine
 import socket
-from utils.html_generator import HtmlGenerator
+from html_generator import HtmlGenerator
 import network
 from pin_handler import PinHandler
 
