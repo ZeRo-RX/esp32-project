@@ -1,7 +1,5 @@
 from webServer import WebServer
-from utils.logging import Logger
 
-logger = Logger()
 
 WIFI_SSID = "SSID"
 WIFI_PASSWORD = "PASSWORD"

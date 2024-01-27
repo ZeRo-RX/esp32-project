@@ -1,7 +1,4 @@
 from web_server import WebServer
-from utils.logging import Logger
-
-logger = Logger()
 
 WIFI_SSID = "ESP32_AP"  # WIFI_SSID
 WIFI_PASSWORD = ""  #  WIFI_PASSWORD
