@@ -14,4 +14,4 @@ try:
     web_server.start_server() # Running a web server
 
 except KeyboardInterrupt as err:
-    logger.log_error(err)
+    pass
