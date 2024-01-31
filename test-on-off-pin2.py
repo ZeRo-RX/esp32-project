@@ -3,7 +3,7 @@ import network
 import socket
 from machine import Pin
 
-# Set the 
+# Set the
 ssid = "ZeRo"
 password = "karimi1397"
 
