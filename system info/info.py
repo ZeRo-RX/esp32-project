@@ -23,8 +23,8 @@ def start_tcp_server(wifi, port):
     return server_socket
 
 def main():
-    your_wifi_ssid = 'ZeRo'
-    your_wifi_password = 'karimi1397'
+    your_wifi_ssid = ''
+    your_wifi_password = ''
     tcp_port = 80
 
     wifi = connect_to_wifi(your_wifi_ssid, your_wifi_password)
