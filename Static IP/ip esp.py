@@ -3,8 +3,8 @@ import time
 import socket
 
 # SSID (نام شبکه) و رمز عبور شبکه WiFi خود را وارد کنید
-WIFI_SSID = "ZeRo"
-WIFI_PASSWORD = "karimi1397"
+WIFI_SSID = ""
+WIFI_PASSWORD = ""
 
 # آدرس IP و درگاه بک‌آپ را وارد کنید
 BACKUP_IP = "192.168.1.1"
