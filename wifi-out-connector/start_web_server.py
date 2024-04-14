@@ -1,10 +1,10 @@
 from webServer import WebServer
 
 
-WIFI_SSID = "SSID"
-WIFI_PASSWORD = "PASSWORD"
+WIFI_SSID = "ZeRo"
+WIFI_PASSWORD = "karimi1397"
 
-pin_numbers = [2, 4, 16, 17, 5, 18, 19, 21]
+pin_numbers = [2, 4, 16, 17, 5, 18, 19, 3]
 
 web_server = WebServer(
     WIFI_SSID, WIFI_PASSWORD, pin_numbers

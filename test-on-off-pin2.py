@@ -4,8 +4,8 @@ import socket
 from machine import Pin
 
 # Set the
-ssid = "ZeRo"
-password = "karimi1397"
+ssid = "ssid"
+password = "password"
 
 # Starting WiFi module
 wlan = network.WLAN(network.STA_IF)

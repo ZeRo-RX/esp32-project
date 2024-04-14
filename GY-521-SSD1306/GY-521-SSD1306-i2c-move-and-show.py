@@ -11,30 +11,40 @@ oled = OLED.SSD1306_I2C(128, 64, i2c)
 gyro_scale_factor = 1 / 131.072  # بر اساس دیتا‌شیت MPU6050
 accel_scale_factor = 1 / 2.0  # تقسیم بر ۲ برای شتاب سنج
 
-# مقدار اولیه Gyro_z
-initial_gyro_z = 0.0
-
 while True:
     mpu_data = mpu.get_values()
+
+    gyro_x = mpu_data['GyX'] * gyro_scale_factor
+    gyro_y = mpu_data['GyY'] * gyro_scale_factor
+    gyro_z = mpu_data['GyZ'] * gyro_scale_factor
 
     accel_x = mpu_data['AcX'] * accel_scale_factor
     accel_y = mpu_data['AcY'] * accel_scale_factor
     accel_z = mpu_data['AcZ'] * accel_scale_factor
 
     ax_degree = math.degrees(math.atan2(accel_x, accel_z))
-    ax_text = "AX:{:.0f}".format(ax_degree)
+    ax_text = "AX{:.0f}".format(ax_degree)
 
     ay_degree = math.degrees(math.atan2(accel_y, accel_z))
-    ay_text = "AY:{:.0f}".format(ay_degree)
+    ay_text = "AY{:.0f}".format(ay_degree)
+
+    az_degree = math.degrees(math.atan2(-gyro_y, gyro_x))
+    az_text = "AZ{:.0f}".format(az_degree)
 
     temperature = mpu_data['Tmp']
 
-    t = "T:{:.0f}".format(temperature)
-    oled.text(t, 95, 0)
+    t = "T{:.0f}".format(temperature)
 
+    oled.pixel(64 - int(ay_degree), 32 - int(ax_degree), 1)
+    oled.pixel(64 - int(ay_degree), 31 - int(ax_degree), 1)
+    oled.pixel(65 - int(ay_degree), 31 - int(ax_degree), 1)
+    oled.pixel(65 - int(ay_degree), 32 - int(ax_degree), 1)
+
+    oled.text(t, 96, 0)
     oled.text(ax_text, 0, 0)
     oled.text(ay_text, 0, 10)
+
     oled.show()
 
-    time.sleep(0.1)
+    time.sleep(0.01)
     oled.fill(0)
