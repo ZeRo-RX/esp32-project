@@ -4,8 +4,8 @@ import socket
 import random
 
 # SSID (نام شبکه) و رمز عبور شبکه WiFi خود را وارد کنید
-WIFI_SSID = "ZeRo"
-WIFI_PASSWORD = "karimi1397"
+WIFI_SSID = ""
+WIFI_PASSWORD = ""
 
 # آدرس IP و درگاه بک‌آپ را وارد کنید
 DESTINATION_IP = "192.168.1.124"
