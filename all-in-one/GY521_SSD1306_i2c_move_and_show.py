@@ -35,9 +35,8 @@ class SensorModule:
     def display_data(self, data):
         self.oled.fill(0)  # Clear the display
 
-        self.oled.text('o', 60 - int(data['ay_degree']), 28 - int(data['ax_degree']))
+        self.oled.text('o', 60 - int(data['ax_degree']), 28 + int(data['ay_degree']))
         self.oled.text(f"T{data['temperature']:.0f}", 96, 0)
         self.oled.text(f"AX{data['ax_degree']:.0f}", 0, 0)
         self.oled.text(f"AY{data['ay_degree']:.0f}", 0, 10)
-        self.oled.text(f"OUT:{data['sensor_value1']}", 0, 55)
         self.oled.show()
