@@ -12,8 +12,8 @@ def connect_to_wifi(ssid, password):
     print(station.ifconfig())
 
 # پارامترهای وای‌فای خود را اینجا وارد کنید
-ssid = 'ZeRo2'
-password = 'karimi1397'
+ssid = ''
+password = ''
 connect_to_wifi(ssid, password)
 
 import socket
