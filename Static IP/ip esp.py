@@ -20,7 +20,7 @@ wifi.connect(WIFI_SSID, WIFI_PASSWORD)
 while not wifi.isconnected():
     time.sleep(1)
 
-print("متصل به WiFi")
+print("Connected to WiFi")
 
 # تنظیم آدرس IP برای ESP32
 esp32_ip = "192.168.1.123"  # آدرس IP مورد نظر را وارد کنید
@@ -29,7 +29,7 @@ esp32_gateway = "192.168.1.1"  # دروازه پیش فرض مورد نظر را
 
 wifi.ifconfig((esp32_ip, esp32_subnet_mask, esp32_gateway, esp32_gateway))
 
-print("آدرس IP برای ESP32 تنظیم شد:", wifi.ifconfig())
+print("IP address set for ESP32:", wifi.ifconfig())
 
 # برقراری ارتباط با بک‌آپ
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
