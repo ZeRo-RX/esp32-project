@@ -2,7 +2,7 @@ from machine import Pin
 from neopixel import NeoPixel
 from time import sleep
 
-pixels = NeoPixel(Pin(4), 25)
+pixels = NeoPixel(Pin(21), 25)
 pix = [3,5,7,11,13,15,17,23]
 pix1 = [0,2,4,6,8,10,14,15,18]
 rainbow = [

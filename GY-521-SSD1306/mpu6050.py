@@ -37,4 +37,3 @@ class accel():
         from time import sleep
         while True:
             print(self.get_values())
-            sleep(0.05)

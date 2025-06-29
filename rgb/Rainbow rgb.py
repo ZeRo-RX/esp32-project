@@ -8,10 +8,10 @@ rainbow = [
   (0 , 62 , 65),(0 , 50 , 77),(0 , 38 , 89),(0 , 26 , 101),(0 , 14 , 113),(0 , 2 , 125),(9 , 0 , 118),(21 , 0 , 106),
   (33 , 0 , 94),(45 , 0 , 82),(57 , 0 , 70),(69 , 0 , 58),(81 , 0 , 46),(93 , 0 , 34),(105 , 0 , 22),(117 , 0 , 10)]
 
-pixels = NeoPixel(Pin(2), 25)
+pixels = NeoPixel(Pin(2), 8)
 while True:
-  rainbow = rainbow[-1:] + rainbow[:-1]
-  for i in range(25):
-    pixels[i] = rainbow[i]
-  pixels.write()
-  sleep(0.01)
+    rainbow = rainbow[-1:] + rainbow[:-1]
+    for i in range(8):
+        pixels[i] = rainbow[i]
+        pixels.write()
+    sleep(0.01)

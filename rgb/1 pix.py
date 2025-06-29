@@ -2,9 +2,9 @@ from machine import Pin
 from neopixel import NeoPixel
 from time import sleep
 
-rainbow = (125 ,0 , 255)
+rainbow = (255 ,0 , 255)
 
-pixels = NeoPixel(Pin(4), 25)
+pixels = NeoPixel(Pin(2), 25)
 while True:
   for i in range(25):
     pixels[i] = rainbow
