@@ -4,8 +4,8 @@ from machine import Pin, PWM
 import socket
 
 # اطلاعات وای‌فای خود را وارد کنید
-ssid = ''
-password = ''
+ssid = 'ZeRo2'
+password = 'karimi1397'
 
 # تنظیم پایه‌ها و PWM
 pins = [Pin(2, Pin.OUT), Pin(4, Pin.OUT), Pin(16, Pin.OUT), Pin(17, Pin.OUT)]

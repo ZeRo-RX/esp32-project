@@ -32,7 +32,7 @@ if sw1 == 1:
             x = 1
         else:
 
-    if x == 2:
+    elif x == 2:
         for i in range(pi):
             pixels1[i] = (0,255,0)
             pixels2[i] = (0,255,0)
