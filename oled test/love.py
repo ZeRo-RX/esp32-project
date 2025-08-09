@@ -39,6 +39,8 @@ def display():
 # اجرای تابع نمایش
 display()
 
+
+
 mm = 1# حلقه نمایش نقاط
 for p in range(0,288):
     mx += 1
@@ -62,5 +64,5 @@ for p in range(0,288):
         oled.pixel(mx5-1-mm, mw1-1+mm, 1)
         oled.pixel(mc+1-mm, ma-mm, 1)
         oled.pixel(mx3-7-mm, me +24 -mm, 1)
-        oled.show()
+    oled.show()
 

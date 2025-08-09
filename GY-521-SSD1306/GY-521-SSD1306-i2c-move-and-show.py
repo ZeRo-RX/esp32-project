@@ -4,7 +4,7 @@ import OLED
 import time
 import math
 
-i2c = I2C(scl=Pin(22), sda=Pin(21))
+i2c = I2C(-1, scl=Pin(22), sda=Pin(21))
 mpu = mpu6050.accel(i2c)
 oled = OLED.SSD1306_I2C(128, 64, i2c)
 
@@ -40,11 +40,17 @@ while True:
     oled.pixel(65 - int(ay_degree), 31 - int(ax_degree), 1)
     oled.pixel(65 - int(ay_degree), 32 - int(ax_degree), 1)
 
-    oled.text(t, 96, 0)
-    oled.text(ax_text, 0, 0)
-    oled.text(ay_text, 0, 10)
-
+    oled.text(t, 96, 0,1)
+    oled.text(ax_text, 0, 0,1)
+    oled.text(ay_text, 0, 10,1)
     oled.show()
+    oled.text(t, 96, 0,0)
+    oled.text(ax_text, 0, 0,0)
+    oled.text(ay_text, 0, 10,0)
+    oled.pixel(64 - int(ay_degree), 32 - int(ax_degree), 0)
+    oled.pixel(64 - int(ay_degree), 31 - int(ax_degree), 0)
+    oled.pixel(65 - int(ay_degree), 31 - int(ax_degree), 0)
+    oled.pixel(65 - int(ay_degree), 32 - int(ax_degree), 0)
 
     time.sleep(0.01)
-    oled.fill(0)
+    #oled.fill(0)

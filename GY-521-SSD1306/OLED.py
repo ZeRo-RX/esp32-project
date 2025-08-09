@@ -1,6 +1,6 @@
 #MicroPython SSD1306 OLED driver, I2C and SPI interfaces created by Adafruit
 
-import time
+
 import framebuf
 
 # register definitions
@@ -161,7 +161,5 @@ class SSD1306_SPI(SSD1306):
 
     def poweron(self):
         self.res.high()
-        time.sleep_ms(1)
         self.res.low()
-        time.sleep_ms(10)
         self.res.high()
